@@ -1,0 +1,39 @@
+.form {
+  justify-content: center;
+  display: flex;
+  gap: 6px;
+  background-color: darkblue;
+  padding: 14px 0;
+}
+
+.input {
+  outline: none;
+  width: 200px;
+  border-radius: 4px;
+  border: none;
+  background-color: #fffffff7;
+  padding: 6px;
+}
+
+.input:hover,
+.input:focus,
+.input:active {
+  background-color: #cacefaf7;
+}
+
+.sendBtn {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #fbfbfb;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 6px;
+}
+
+.sendBtn:hover,
+.sendBtn:focus,
+.sendBtn:active {
+  background-color: #cacefaf7;
+}

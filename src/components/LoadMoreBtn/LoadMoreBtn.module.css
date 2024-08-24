@@ -1,0 +1,16 @@
+.loadMore {
+  display: block;
+  margin: 0 auto 20px;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid darkblue;
+  border-radius: 4px;
+  padding: 10px;
+  outline: none;
+  font-size: 16px;
+}
+
+.loadMore:hover,
+.loadMore:focus,
+.loadMore:active {
+  background-color: #d6cdff;
+}
