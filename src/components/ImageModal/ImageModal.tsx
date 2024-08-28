@@ -3,7 +3,14 @@ import css from "./ImageModal.module.css";
 
 Modal.setAppElement("#root");
 
-export default function ImageModal({ isOpen, onRequestClose, imgInfo }) {
+interface ImageModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  imgInfo: { src: string; alt: string };
+}
+
+
+export default function ImageModal({ isOpen, onRequestClose, imgInfo }: ImageModalProps) {
   const { src, alt } = imgInfo;
   return (
     <Modal

@@ -1,20 +1,30 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FormikHelpers } from "formik";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./SearchBar.module.css";
 import { BiSearch } from "react-icons/bi";
 
-const initValues = {
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+interface FormValues {
+  query: string;
+}
+
+
+const initValues: FormValues = {
   query: "",
 };
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ onSearch }: SearchBarProps) {
   const notify = () => toast.error("Please, write search query!");
 
-  const handleSearch = (values, actions) => {
+  const handleSearch = (values: FormValues, actions: FormikHelpers<FormValues>) => {
     const query = values.query.trim();
 
     if (query === "") {
-      return notify();
+      notify();
+      return;
     }
     onSearch(query);
     actions.resetForm();

@@ -7,17 +7,29 @@ import ImageModal from "./ImageModal/ImageModal";
 import Loader from "./Loader/Loader";
 import { getImages } from "../api";
 
-export default function App() {
-  const [page, setPage] = useState(0);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [images, setImages] = useState([]);
-  const [error, setError] = useState(false);
-  const [isLoad, setIsLoad] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [targetImage, setTargetImage] = useState({ src: "", alt: "" });
-  const [errorMessage, setErrorMessage] = useState("Ooops! Please reload!");
+interface Image {
+  id: string;
+  urls: {
+    small: string;
+    regular: string;
+  };
+  alt_description: string;
+}
 
-  const openModal = ({ src, alt }) => {
+export default function App() {
+  const [page, setPage] = useState<number>(0);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [images, setImages] = useState<Image[]>([]);
+  const [error, setError] = useState<boolean>(false);
+  const [isLoad, setIsLoad] = useState<boolean>(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [targetImage, setTargetImage] = useState<{ src: string; alt: string }>({
+    src: "",
+    alt: "",
+  });
+  const [errorMessage, setErrorMessage] = useState<string>("Ooops! Please reload!");
+
+  const openModal = ({ src, alt }: { src: string; alt: string }) => {
     setTargetImage({ src, alt });
     setModalIsOpen(true);
   };
@@ -27,7 +39,7 @@ export default function App() {
     setTargetImage({ src: "", alt: "" });
   };
 
-  const setSearch = (query) => {
+  const setSearch = (query: string) => {
     setSearchQuery(query);
     setPage(1);
     setImages([]);
